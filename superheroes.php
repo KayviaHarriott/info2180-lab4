@@ -1,4 +1,11 @@
-<?php
+<?php 
+/*
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "";
+
+mysqli_connect($host, $user, $password, $database);*/
 
 $superheroes = [
   [
@@ -63,6 +70,8 @@ $superheroes = [
   ], 
 ];
 
+
+
 ?>
 
 <ul>
@@ -70,3 +79,4 @@ $superheroes = [
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+
