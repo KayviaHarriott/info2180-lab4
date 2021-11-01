@@ -52,3 +52,88 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 });
+
+__________________-
+
+document.addEventListener('DOMContentLoaded', function() {
+    //alert("Document loads");
+    var form = document.querySelector('form');
+    var textField = document.getElementsByClassName('name-alias-field')[0].value;
+
+    //form.onsubmit = findName();
+
+    
+    form.addEventListener('subbmit', function(evt){
+        evt.preventDefault();
+        if (textField == " " || textField == "" || textField == null){
+            requestCountry();
+        }
+        else{
+            defaultEmpty2(textField);
+        }
+
+
+    });
+
+    function defaultEmpty(txtrequest = ""){   
+
+        $.ajax("superheroes.php", {
+            method: 'GET'             
+            
+        }).done(function(response){
+            let parseHTML = response;
+            $("#result").html(parseHTML);
+            //alert(response);
+            
+        }).fail(function(){
+            alert('There was an issue with the request.');
+        });
+    }
+
+    function defaultEmpty2(txtrequest = ""){   
+        let superheroesI = textField;
+        superheroesI = superheroesI.trim();
+
+        $.ajax("superheroes.php", {
+            method: 'GET',
+            data: {
+                alias: superheroesI
+            }        
+            
+        }).done(function(response){
+            let parseHTML = response;
+            $("#result").html(parseHTML);
+            //alert(response);
+            
+        }).fail(function(){
+            alert('There was an issue with the request.');
+        });
+    }
+    
+
+    function requestCountry(city = ""){
+        let countryI = $("#name-alias-field").val();
+        countryI = countryI.trim();
+        
+        $.ajax("superheroes.php", {
+            method: 'POST',
+            data: {
+                alias: 1
+            }
+        }).done(function(response){
+            let parseHTML = response;
+            $("#result").html(parseHTML);
+
+
+        }).fail(function(){
+            alert('There was an issue with the request.');
+        });
+    }
+
+    form.addEventListener('submit', function(evt){
+        evt.preventDefault();
+        //alert("Works");
+        requestCountry();
+
+    });
+});

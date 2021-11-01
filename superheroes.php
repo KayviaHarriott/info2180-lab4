@@ -1,11 +1,4 @@
-<?php 
-/*
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "";
-
-mysqli_connect($host, $user, $password, $database);*/
+<?php
 
 $superheroes = [
   [
@@ -71,12 +64,35 @@ $superheroes = [
 ];
 
 
+$a = $_REQUEST["a"];
+
+$search = "";
+
+if ($a !== "") {
+    $a = strtolower($a);
+    $len=strlen($a);
+    foreach($superheroes as $superhero) {
+        if (stristr($a, substr($superhero['alias'], 0, $len)) || stristr($a, substr($superhero['name'], 0, $len))) {
+            if ($search === "") {
+                $search =  "<h3>" .$superhero['alias'] . "</h3>" .
+                            "<h4>A.K.A " . $superhero['name'] . "</h4>" .
+                            "<p>" . $superhero['biography'] . "<p>"
+                    ;
+            }
+        }
+    }
+}
+if ($a == "" || $a == " " || $a == null){    
+    foreach($superheroes as $superhero) {
+        
+                $search .=  "<h3>" .$superhero['alias'] . "</h3>" .
+                            "<h4>A.K.A " . $superhero['name'] . "</h4>" .
+                            "<p>" . $superhero['biography'] . "<p><hr>";
+        }
+    }
+
+
+echo $search === "" ? "Superhero not found" : $search;
+
 
 ?>
-
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
-

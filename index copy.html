@@ -1,20 +1,39 @@
-<!--
-	Cite
-	Title: Get data from database using AJAX, Javascript, PHP, MySQL
-	Author: Adnan Afzal
-	Availability: http://adnan-tech.com/get-data-from-database-using-ajax-javascript-php-mysql/
--->
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INFO2180 Project 1</title>
     <link  rel="stylesheet" href="styles.css" type="text/css">
+    
     <script src="app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<!--     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+-->
 
-</head> 
+<!--
+<script>
+        function searchme(str) {
+            if(str.length == 0){
+                document.getElementById("src").innerHTML = "";
+                return;
+            }
+            else{
+                 var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("src").innerHTML = xmlhttp.responseText;
+                     }
+            };
+            xmlhttp.open("GET", "search.php?a=" + str, true);
+            xmlhttp.send();
+            }
+        }				
+        </script> -->
+</head>
 <body>
     <header>
         <h3>AVENGERS CHARACTER SEARCH</h1>
@@ -24,19 +43,20 @@
                 <form id="name-alias-form" action="#">
                         <label id="name-alias-label" for="name-alias">Search by Full Name of Alias</label><br>
                         <br><input type="text" class="name-alias-field" id="name-alias-field" placeholder="e.g. Captain America or Steve Rogers">
-                        <input type="submit" class="submit-button" id="submit-button" value="Submit">
+                        <input type="submit" id="submit-button" value="Submit">
                 </form>
                 <div>
                     <div>
-						<h1>RESULT</h1>
-						<hr>
+                        <h1>RESULT</h1>
                     </div>
-                        <div class="result" id="result">               
+                        <div class="result" id="result">         
+                            
+                        
                     </div>
                 </div>    
         </div> 
         
-	</main>
+    </main>
     <footer>
         <div class="footer">
             <p>Copyright 2020, Kayvia Harriott</p>
@@ -44,3 +64,4 @@
     </footer>
 </body>
 </html>
+
